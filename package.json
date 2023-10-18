@@ -36,6 +36,9 @@
     "leaflet": "^1.9.4",
     "lit": "^3.0.0",
     "lit-element": "^4.0.0",
-    "lit-html": "^3.0.0"
+    "lit-html": "^3.0.0",
+    "csv-parser": "^3.0.0",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.6.2"
   }
 }
