@@ -14,9 +14,32 @@ export class LeafletMap extends LitElement {
         :host {
             display: block;
         }
+        #map-preview {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+          width: var(--map-width, 600px);
+          height: var(--map-height, 400px);
+        }
         #map {
-            width: var(--map-width, 600px);
-            height: var(--map-height, 400px);
+            width: 100%;
+            height: 100%;
+        }
+        #dl-button {
+            border: none;
+            width: fit-content;
+            text-transform: uppercase;
+            background: #17161A;
+            border-radius: 99px;
+            padding: 15px 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 1s;
+            font-size: 14px;
+        }
+        #dl-button:hover {
+            opacity: 0.8;
         }
     `;
 
@@ -46,8 +69,10 @@ export class LeafletMap extends LitElement {
     render() {
         return html`
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-            <div id="map"></div>
-            <button @click="${this.download}">Download ${this.type} from ${this.path}</button>
+            <div id="map-preview">
+                <div id="map"></div>
+                <button id="dl-button" @click="${this.download}">Download my path</button>
+            </div>
         `;
     }
 
