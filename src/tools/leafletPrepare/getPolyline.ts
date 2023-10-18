@@ -7,6 +7,8 @@ export function getPolyline(bounds: {lat:string, lon:string}[], map: L.Map)
       return [0, 0];
     }
     return [parseFloat(item.lat), parseFloat(item.lon)];
+  }).filter((item) => {
+    return item[0] !== 0 && item[1] !== 0;
   });
 
   let polyline = L.polyline((latLons as LatLngExpression[]), {color: 'blue'}).addTo(map);

@@ -1,12 +1,13 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import L from "leaflet";
-
+import { parseFile } from './tools/parser/parser';
+import {getPolyline} from "./tools/leafletPrepare/getPolyline";
 @customElement('leaflet-map')
 export class LeafletMap extends LitElement {
 
     @property({ type: String }) path: string = '';
-    @property({ type: String }) type: 'GPX' | 'GTFS' = 'GPX';
+    @property({ type: String }) type: 'csv' | 'txt' | 'gpx' = 'csv';
     @property({ type: Number }) height: number = 400;
     @property({ type: Number }) width: number = 600;
 
@@ -56,6 +57,13 @@ export class LeafletMap extends LitElement {
         L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors',
         }).addTo(this.map);
+
+        if(this.path) {
+            parseFile(this.type, this.path)
+              .then((data) => {
+                  getPolyline(data, this.map!)
+              });
+        }
     }
 
     updated(changedProperties: Map<string | number | symbol, unknown>): void {
