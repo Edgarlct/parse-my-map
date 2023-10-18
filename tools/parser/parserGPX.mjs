@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { parseString } from 'xml2js';
 
-const filePath = "src/gpx/test.gpx";
+const filePath = "src/files/test.gpx";
 const gpx = fs.readFileSync(filePath, 'utf-8');
 
 // Parser le XML en objet JavaScript
@@ -18,6 +18,5 @@ parseString(gpx, (err, result) => {
         const lon = point.$.lon;
         return { lat, lon };
     });
-
     console.log(parsedData);
 });
