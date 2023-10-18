@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "leaflet": "^1.9.4",
+    "leaflet-providers": "^2.0.0",
     "lit": "^3.0.0",
     "lit-element": "^4.0.0",
     "lit-html": "^3.0.0"

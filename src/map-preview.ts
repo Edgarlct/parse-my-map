@@ -15,7 +15,6 @@ export class LeafletMap extends LitElement {
             display: block;
         }
         #map {
-            background: lightgray;
             width: var(--map-width, 600px);
             height: var(--map-height, 400px);
         }
@@ -31,8 +30,8 @@ export class LeafletMap extends LitElement {
     firstUpdated() {
         this.map = L.map(this.shadowRoot!.getElementById('map')!).setView([this.center.lat, this.center.lng], this.zoom);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors',
         }).addTo(this.map);
     }
 
