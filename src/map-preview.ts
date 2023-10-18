@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import L from "leaflet";
+import {getPolyline} from "./tools/leafletPrepare/getPolyline";
 
 @customElement('leaflet-map')
 export class LeafletMap extends LitElement {
@@ -34,6 +35,14 @@ export class LeafletMap extends LitElement {
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(this.map);
+
+        if(this.path) {
+            getPolyline([{ lat: '44.54694', lon: '6.074887' },
+                { lat: '44.547116', lon: '6.074986' },
+                { lat: '44.547213', lon: '6.075045' },
+                { lat: '44.547267', lon: '6.075078' },
+                { lat: '44.547303', lon: '6.075099' }], this.map);
+        }
     }
 
     updated(changedProperties: Map<string | number | symbol, unknown>): void {
