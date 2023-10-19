@@ -10,7 +10,7 @@ To install the parser, run the following command:
 
 ``npm install parse-my-map ``  
 
-ou  
+or  
 
 ``yarn add parse-my-map ``
 
@@ -19,16 +19,20 @@ ou
 
 To use the parser, import it into your TypeScript code:
 
-```import { parseFile } from 'parse-my-map'; ```
+```import 'parse-my-map' ```
+
+And add the component:  
+
+```<parse-my-map type="gpx" path="exemple.gpx" width="700" height="500"></parse-my-map> ```
 
 ### 🧪 Testing
 The parser is accompanied by a set of unit tests. To run these tests, execute the following command:
 
-```npm test ```  
+```npm run test ```  
 
-ou  
+or  
 
-```yarn test ```
+```yarn run test ```
 
 ### 💼 Contributors
 
