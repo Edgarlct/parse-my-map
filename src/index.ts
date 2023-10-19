@@ -90,7 +90,7 @@ export class ParseMyMap extends LitElement {
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
             <div id="map-preview">
                 <div id="map"></div>
-                <button id="dl-button" @click="${this?.download}">Download my path</button>
+                <button id="dl-button" @click="${()=>{this?.download()}}">Download my path</button>
             </div>
         `;
     }
