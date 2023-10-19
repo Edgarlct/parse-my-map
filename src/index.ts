@@ -95,6 +95,7 @@ export class ParseMyMap extends LitElement {
         `;
     }
 
+    // download the file
     download() {
         if(this.path) {
             window.open(this.path);
