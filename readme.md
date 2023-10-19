@@ -5,6 +5,8 @@
 This parser allows for the analysis of GPX, TXT (in CSV format), or XTML files, which are GPS trace file formats.  
 The parser returns a JavaScript object containing the file data displayed on a map.
 
+![map](src/assets/logo.png) ![interface](src/assets/interface.png)
+
 ### 🛠 Installation
 To install the parser, run the following command:
 
