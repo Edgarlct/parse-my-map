@@ -6,6 +6,7 @@ import {getPolyline} from "./tools/leafletPrepare/getPolyline";
 @customElement('parse-my-map')
 export class ParseMyMap extends LitElement {
 
+    // defined properties for the element
     @property({ type: String }) path: string = '';
     @property({ type: String }) type: 'csv' | 'txt' | 'gpx' = 'csv';
     @property({ type: Number }) height: number = 400;
@@ -44,6 +45,7 @@ export class ParseMyMap extends LitElement {
         }
     `;
 
+    // default values for the properties
     @property({ type: Object})
     center = { lat: 51.505, lng: -0.09 };
     @property({ type: Number})
@@ -52,20 +54,28 @@ export class ParseMyMap extends LitElement {
     private map?: L.Map;
 
     firstUpdated() {
+        // create a map in the "map" div, set the view to a given place and zoom
         this.map = L.map(this.shadowRoot!.getElementById('map')!).setView([this.center.lat, this.center.lng], this.zoom);
 
+        // add an OpenStreetMap tile layer
         L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors',
         }).addTo(this.map);
 
         if(this.path) {
+            // parse the file to return an array of coordinates
             parseFile(this.type, this.path)
               .then((data) => {
+                  // add a polyline to the map
                   getPolyline(data, this.map!)
+              })
+              .catch((err) => {
+                  console.error(err);
               });
         }
     }
 
+    // update the map size when the component is updated
     updated(changedProperties: Map<string | number | symbol, unknown>): void {
         super.updated(changedProperties);
         if (changedProperties.has('width') || changedProperties.has('height')) {
@@ -74,12 +84,13 @@ export class ParseMyMap extends LitElement {
         }
     }
 
+    // render the component
     render() {
         return html`
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
             <div id="map-preview">
                 <div id="map"></div>
-                <button id="dl-button" @click="${this.download}">Download my path</button>
+                <button id="dl-button" @click="${this?.download()}">Download my path</button>
             </div>
         `;
     }

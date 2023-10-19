@@ -1,12 +1,16 @@
 import Papa from 'papaparse';
 
+interface IParsedItem {
+    [key: string]: string; // This allows the object to have any other properties
+}
 export async function parseFile(type: 'txt'|'csv'|'gpx', filePath:string) {
     let parsedData: {lat:string,lon:string}[] = [];
 
     if (type === 'txt' || type === 'csv') {
-        let data = await fetch(filePath);
-        let text = await data.text();
-        parsedData = Papa.parse(text, {header: true}).data?.map((item:any) => {
+        const data = await fetch(filePath);
+        const text = await data.text();
+        parsedData = Papa.parse<IParsedItem>(text, {header: true}).data?.map((item) => {
+            // check if item is an object
             if (item?.shape_pt_lat === undefined || item?.shape_pt_lon === undefined) {
                 return {lat: '0', lon: '0'};
             }
@@ -14,8 +18,8 @@ export async function parseFile(type: 'txt'|'csv'|'gpx', filePath:string) {
         });
 
     } else if (type === 'gpx') {
-        let data = await fetch(filePath);
-        let text = await data.text();
+        const data = await fetch(filePath);
+        const text = await data.text();
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(text, "text/xml");
         const trkpts = xmlDoc.getElementsByTagName("trkpt");
