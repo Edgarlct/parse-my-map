@@ -1,6 +1,6 @@
 declare namespace JSX {
   interface IntrinsicElements {
-    'leaflet-map': {
+    'parse-my-map': {
       type?: 'csv' | 'txt' | 'gpx';
       path?: string;
       height?: number;
