@@ -3,8 +3,8 @@ import { customElement, property } from 'lit/decorators.js';
 import L from "leaflet";
 import { parseFile } from './tools/parser/parser';
 import {getPolyline} from "./tools/leafletPrepare/getPolyline";
-@customElement('leaflet-map')
-export class LeafletMap extends LitElement {
+@customElement('parse-my-map')
+export class ParseMyMap extends LitElement {
 
     @property({ type: String }) path: string = '';
     @property({ type: String }) type: 'csv' | 'txt' | 'gpx' = 'csv';
