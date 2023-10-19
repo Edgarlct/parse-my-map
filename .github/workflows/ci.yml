@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, '[RELEASE]')"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org/"
+      - name: 'Install dependencies'
+        run: npm install
+      - name: 'run lint'
+        run: npm run lint
+      - name: 'Run tests'
+        run: npm test
+      - name: 'run build'
+        run: npm run build
+      - name: 'publish'
+        uses: JS-DevTools/npm-publish@v2
+        with:
+          token: ${{ secrets.NPM_TOKEN }}

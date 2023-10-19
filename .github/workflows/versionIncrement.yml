@@ -1,0 +1,24 @@
+name: Version Increment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, '[PATCH]') || startsWith(github.event.head_commit.message, '[MINOR]') || startsWith(github.event.head_commit.message, '[MAJOR]')"
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      - run: git config --global user.name 'BOT'
+      - run: git config --global user.email 'edgar.lecomte@icloud.com'
+      - run: npm version patch -m "[RELEASE] %s"
+        if: "startsWith(github.event.head_commit.message, '[PATCH]')"
+      - run: npm version minor -m "[RELEASE] %s"
+        if: "startsWith(github.event.head_commit.message, '[MINOR]')"
+      - run: npm version major -m "[RELEASE] %s"
+        if: "startsWith(github.event.head_commit.message, '[MAJOR]')"
+      - run: git push
