@@ -9,6 +9,9 @@
     "strict": true,
     "experimentalDecorators": true
   },
-  "include": ["./src/**/*"],
+  "include": [
+    "src/**/*",
+    "custom-elements.d.ts"
+  ],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
