@@ -2,35 +2,35 @@
 
 ----
 
-Ce parser permet d'analyser un fichier gpx , txt ( au format csv ) ou xtml, un format de fichier de trace GPS. 
-Le parser renvoie un objet JavaScript contenant les données du fichier sur une map.
+This parser allows for the analysis of GPX, TXT (in CSV format), or XTML files, which are GPS trace file formats.
+The parser returns a JavaScript object containing the file data displayed on a map.
 
 Installation
-Pour installer le parser, exécutez la commande suivante :
+To install the parser, run the following command:
 
 ``npm install parse-my-map ``
 
 ou
-``yarn install parse-my-map ``
+``yarn add parse-my-map ``
 
 
-### Utilisation
+### Usage
 
-Pour utiliser le parser, importez-le dans votre code TypeScript :
+To use the parser, import it into your TypeScript code:
 
-```import { parseFile } from 'parser'; ```
+```import { parseFile } from 'parse-my-map'; ```
 
-### Tests
-Le parser est accompagné d'un ensemble de tests unitaires. Pour exécuter les tests, exécutez la commande suivante :
+### Testing
+The parser is accompanied by a set of unit tests. To run these tests, execute the following command:
 
 ```npm test ```
 ou
 ```yarn test ```
 
-### Contribuer
+### Contributors
 
 Quentin Drouet / Edgar Lecompte / Malaterre Romain  ❤️
 
 
 ### License
-MIT License - voir le fichier [LICENSE](LICENSE) pour plus de détails
+MIT License - see the LICENSE file [LICENSE](LICENSE) for more details.
