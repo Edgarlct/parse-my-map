@@ -19,6 +19,7 @@
   "bugs": {
     "url": "https://github.com/Edgarlct/parse-my-map/issues"
   },
+  "keywords": ["gpx", "gps-visualizer", "map"],
   "homepage": "https://github.com/Edgarlct/parse-my-map#readme",
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.2",
