@@ -7,12 +7,12 @@
   "scripts": {
     "start": "node esbuild.js start",
     "lint": "eslint src --ext .ts",
-    "test": "ts-mocha tests/*.ts",
+    "test": "nyc --reporter=html ts-mocha tests/*.ts",
     "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Edgarlct/parse-my-map.git"
+    "url": "https://github.com/Edgarlct/parse-my-map.git"
   },
   "author": "Quentin Drouet, Romain Malaterre, Edgar Lecomte",
   "license": "MIT",
@@ -31,6 +31,7 @@
     "chai": "^4.3.10",
     "esbuild": "^0.19.5",
     "eslint": "^8.51.0",
+    "nyc": "^15.1.0",
     "ts-mocha": "^10.0.0",
     "typescript": "^5.2.2"
   },
