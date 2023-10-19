@@ -1,6 +1,6 @@
 {
   "name": "parse-my-map",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Simplify your geographic data visualization with this easy-to-use RPM package. With just a single component integration, this package offers instant previews of GPX and Shape files. Designed for seamless incorporation into your projects, it eliminates the complexities usually associated with geographic data rendering. Whether you're working on a mapping application, geographical data analysis, or just need a quick preview tool, this package is the perfect solution to effortlessly visualize GPX and Shape files.",
   "main": "dist/index.js",
   "types": "dist/custom-elements.d.ts",
@@ -19,7 +19,11 @@
   "bugs": {
     "url": "https://github.com/Edgarlct/parse-my-map/issues"
   },
-  "keywords": ["gpx", "gps-visualizer", "map"],
+  "keywords": [
+    "gpx",
+    "gps-visualizer",
+    "map"
+  ],
   "homepage": "https://github.com/Edgarlct/parse-my-map#readme",
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.2",
