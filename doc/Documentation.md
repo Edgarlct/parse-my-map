@@ -11,7 +11,7 @@ So they decided to create a parser to get the map and the data in one file.
 
 ## Types of files 
 
-- what is a gpx file ? 
+- what is a gpx file ?
 
 GPX, or GPS Exchange Format, is an XML schema designed as a common GPS data format for software applications. It can be used to describe waypoints, tracks, and routes.
 
